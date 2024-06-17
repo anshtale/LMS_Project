@@ -41,7 +41,7 @@ const CreateCoursePage = () => {
     const {isSubmitting,isValid} = form.formState;
     const onSubmit = async(values : z.infer<typeof formSchema>)=>{
         try{
-            const response = await axios.post("/api/course",values);
+            const response = await axios.post("/api/courses",values);
             router.push(`/teacher/courses/${response.data.id}`);
 
         }catch{
@@ -50,8 +50,8 @@ const CreateCoursePage = () => {
     }
 
     return (
-        <div className="max-w-5xl mx-auto flex 
-        items-center justify-center 
+        <div className="max-w-5xl mx-auto flex
+        justify-center items-center
         h-full p-6">
             <div>
                 <h1 className="text-2xl">
@@ -85,7 +85,7 @@ const CreateCoursePage = () => {
                             </FormItem>
                         )}
                         />
-                        <div className=" flex items-center justify-center gap-x-2">
+                        <div className=" flex gap-x-2">
                             <Link href={'/'}>
                                 <Button type="button" variant="ghost">
                                     Cancel
