@@ -87,7 +87,7 @@ const CreateCoursePage = () => {
                         />
                         <div className=" flex items-center justify-center gap-x-2">
                             <Link href={'/'}>
-                                <Button type="button" variant={"ghost"}>
+                                <Button type="button" variant="ghost">
                                     Cancel
                                 </Button>
                             </Link>
