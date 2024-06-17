@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
+
 import { Pencil } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -34,17 +35,17 @@ const TitleForm = ({
         resolver: zodResolver(formSchema),
         defaultValues: intialData
     });
-    
+    const router = useRouter();
     const [isEditing,setIsEditing] = useState(false);
     const toggleEdit = ()=>setIsEditing((current)=>(!current));
     const { isSubmitting, isValid } = form.formState;
     const onSubmit = async (values : z.infer<typeof formSchema>)=>{
         try{
-            const response = await axios.post(`/api/courses/${courseId}`,values);
+            await axios.patch(`/api/courses/${courseId}`,values);
+            toast.success("Course Updated!")
             toggleEdit();
-            useRouter().refresh();
-
-        }catch{
+            router.refresh();
+        }catch(e){
             toast.error("Something went wrong!");
         }
     }

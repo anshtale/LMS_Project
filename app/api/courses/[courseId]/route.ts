@@ -22,6 +22,7 @@ export async function PATCH(
                 ...values,
             }
         })
+        return NextResponse.json(course);
         
         
     }catch(error){

@@ -37,15 +37,16 @@ const DescriptionForm = ({
             description: intialData?.description || ""
         }
     });
-    
+    const router = useRouter();
     const [isEditing,setIsEditing] = useState(false);
     const toggleEdit = ()=>setIsEditing((current)=>(!current));
     const { isSubmitting, isValid } = form.formState;
     const onSubmit = async (values : z.infer<typeof formSchema>)=>{
         try{
-            const response = await axios.post(`/api/courses/${courseId}`,values);
+            await axios.patch(`/api/courses/${courseId}`,values);
+            toast.success("Description Updated!")
             toggleEdit();
-            useRouter().refresh();
+            router.refresh();
 
         }catch{
             toast.error("Something went wrong!");
