@@ -55,7 +55,7 @@ const TitleForm = ({
             <div className="font-medium flex items-center justify-between">
                 Course Title
             
-                <Button onClick={toggleEdit} value={"ghost"}>
+                <Button value="ghost" onClick={toggleEdit} >
                     {isEditing ? (
                         <>Cancel</>
                     ):( <>

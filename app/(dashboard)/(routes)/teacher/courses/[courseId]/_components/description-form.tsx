@@ -58,7 +58,7 @@ const DescriptionForm = ({
             <div className="font-medium flex items-center justify-between">
                 Course Description
             
-                <Button onClick={toggleEdit} value={"ghost"}>
+                <Button onClick={toggleEdit} value="ghost">
                     {isEditing ? (
                         <>Cancel</>
                     ):( <>
