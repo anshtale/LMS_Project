@@ -3,10 +3,11 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import CourseIdPage from "../../page";
 import Link from "next/link";
-import { ArrowLeft, LayoutDashboard } from "lucide-react";
+import { ArrowLeft, Eye, LayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import ChapterTitleForm from "./_components/chapter-title-form";
 import ChapterDescriptionForm from "./_components/chapter-description-form";
+import ChapterAccessForm from "./_components/chapter-access-form";
 
 const ChapterIdPage = async({
     params
@@ -78,6 +79,22 @@ const ChapterIdPage = async({
                             intialData={chapter}
                             chapterId={params.chapterId}
                             courseId={params.courseId}/>
+                        
+                    </div>
+                    <div>
+                        <div className="flex items-center gap-x-2">
+                            <IconBadge icon={Eye}/>
+                            <h2 className="text-xl">
+
+                                Access Settings
+                            </h2>
+                        </div>
+                        <ChapterAccessForm
+                            intialData={chapter}
+                            courseId={params.courseId}
+                            chapterId={params.chapterId}
+                        />
+                        
                     </div>
 
                 </div>
